@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Pell Grant",
+    "amount": "Up to $7,395",
+    "deadline": "2024-06-30",
+    "type": "Need-Based",
+    "eligibility": ["Financial Need", "US Citizen"],
+    "description": "Federal grant for undergraduate students with exceptional financial need"
+  },
+  {
+    "id": 2,
+    "name": "National Merit Scholarship",
+    "amount": "$2,500",
+    "deadline": "2024-02-01",
+    "type": "Merit",
+    "eligibility": ["PSAT Score", "Academic Excellence"],
+    "description": "Merit-based scholarship for top PSAT performers"
+  },
+  {
+    "id": 3,
+    "name": "Gates Scholarship",
+    "amount": "Full Tuition",
+    "deadline": "2024-09-15",
+    "type": "Need-Based",
+    "eligibility": ["Minority", "High GPA", "Leadership"],
+    "description": "Full scholarship for outstanding minority students with financial need"
+  },
+  {
+    "id": 4,
+    "name": "Coca-Cola Scholars Program",
+    "amount": "$20,000",
+    "deadline": "2024-10-31",
+    "type": "Merit",
+    "eligibility": ["Leadership", "Community Service", "Academic Achievement"],
+    "description": "Recognizing exceptional high school seniors who are committed to leadership"
+  },
+  {
+    "id": 5,
+    "name": "Jack Kent Cooke Foundation Scholarship",
+    "amount": "Up to $55,000",
+    "deadline": "2024-11-15",
+    "type": "Need-Based",
+    "eligibility": ["High Academic Achievement", "Financial Need"],
+    "description": "For high-achieving students with financial need to attend top colleges"
+  },
+  {
+    "id": 6,
+    "name": "QuestBridge National College Match",
+    "amount": "Full Ride",
+    "deadline": "2024-09-26",
+    "type": "Need-Based",
+    "eligibility": ["Low Income", "High Academic Achievement"],
+    "description": "Full four-year scholarships to top colleges for low-income students"
+  },
+  {
+    "id": 7,
+    "name": "Hispanic Scholarship Fund",
+    "amount": "$500 - $5,000",
+    "deadline": "2024-03-30",
+    "type": "Need-Based",
+    "eligibility": ["Hispanic Heritage", "US Citizen/Resident"],
+    "description": "Supporting Hispanic American students in higher education"
+  },
+  {
+    "id": 8,
+    "name": "UNCF Scholarships",
+    "amount": "$1,000 - $10,000",
+    "deadline": "2024-04-15",
+    "type": "Need-Based",
+    "eligibility": ["African American", "Financial Need"],
+    "description": "Various scholarships for African American students"
+  },
+  {
+    "id": 9,
+    "name": "Dell Scholars Program",
+    "amount": "$20,000",
+    "deadline": "2024-12-01",
+    "type": "Need-Based",
+    "eligibility": ["Low Income", "Academic Potential", "Determination"],
+    "description": "Supporting students who have overcome significant obstacles"
+  },
+  {
+    "id": 10,
+    "name": "Horatio Alger Scholarship",
+    "amount": "$25,000",
+    "deadline": "2024-10-25",
+    "type": "Need-Based",
+    "eligibility": ["Financial Need", "Overcome Adversity", "Strong Character"],
+    "description": "For students who have faced and overcome great obstacles"
+  }
+]
