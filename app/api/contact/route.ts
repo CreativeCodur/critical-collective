@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
 import { checkRateLimit } from '@/lib/rate-limit'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Simple email fallback without Resend
+const sendEmail = async (data: any) => {
+  // Log email data for now - replace with your preferred email service
+  console.log('Email would be sent:', data)
+  return { success: true }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -64,10 +68,9 @@ Message: ${message}
 ${attachments.length > 0 ? `Files attached: ${attachments.length}` : 'No files attached'}
     `.trim()
 
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
+    await sendEmail({
+      from: email,
       to: 'criticalcollectivecontact@gmail.com',
-      replyTo: email,
       subject: getSubject(),
       text: emailContent,
       attachments: attachments.length > 0 ? attachments : undefined,
