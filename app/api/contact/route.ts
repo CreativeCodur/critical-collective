@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
 import { checkRateLimit } from '@/lib/rate-limit'
 
-const resend = new Resend(process.env.RESEND_API_KEY || 're_GtHVfU94_9nMrxafqdiZuHCN94trqxXGw')
+const RESEND_API_KEY = 're_GtHVfU94_9nMrxafqdiZuHCN94trqxXGw'
 
 export async function POST(request: NextRequest) {
   try {
@@ -64,6 +63,9 @@ Message: ${message}
 ${attachments.length > 0 ? `Files attached: ${attachments.length}` : 'No files attached'}
     `.trim()
 
+    const { Resend } = await import('resend')
+    const resend = new Resend(RESEND_API_KEY)
+    
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'criticalcollectivecontact@gmail.com',
