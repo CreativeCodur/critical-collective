@@ -1,7 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+const submissions = new Map<string, { count: number, month: string }>()
+
 export async function POST(request: NextRequest) {
   try {
+    const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown'
+    const currentMonth = new Date().toISOString().slice(0, 7) // YYYY-MM
+    
+    const userSubmissions = submissions.get(ip)
+    if (userSubmissions && userSubmissions.month === currentMonth) {
+      if (userSubmissions.count >= 5) {
+        return NextResponse.json({ error: 'Monthly submission limit reached (5 per month)' }, { status: 429 })
+      }
+      userSubmissions.count++
+    } else {
+      submissions.set(ip, { count: 1, month: currentMonth })
+    }
+    
     const formData = await request.formData()
     
     const name = formData.get('name') as string
