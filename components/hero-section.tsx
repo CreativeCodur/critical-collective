@@ -59,18 +59,9 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Content - Speech Bubbles */}
-          <div className="relative animate-on-load opacity-0 w-full h-96">
-            <svg className="w-full h-full animate-float" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 768">
-              {/* First bubble: Exact shape as third bubble, but blue and top-right */}
-              <path fill="#006ADF" transform="translate(-664, -588)" d="M664 588h180c37 0 68 30 68 68v68c0 22-22 34-44 34 14-15 14-32 14-32H732c-37 0-68-30-68-68v-70z"/>
-              
-              {/* Large central-left overlapping speech bubble (light blue) */}
-              <path fill="#C5F1FF" d="M0 234h486c55 0 100 45 100 100v122H486c55 0 100 45 100 100v122H486c-9 40-32 62-32 62s88 0 101-62H136c-55 0-100-45-100-100V436h94c-55 0-100-45-100-100V234z"/>
-              
-              {/* Small bottom-right speech bubble (black) */}
-              <path fill="#000" d="M664 588h180c37 0 68 30 68 68v68c0 22-22 34-44 34 14-15 14-32 14-32H732c-37 0-68-30-68-68v-70z"/>
-            </svg>
+          {/* Right Content - Logo */}
+          <div className="relative animate-on-load opacity-0 w-full h-96 flex items-center justify-center">
+            <img src="/icons/critical-collective-logo.svg" alt="Critical Collective" className="w-64 h-64 animate-float" />
           </div>
         </div>
       </div>
