@@ -327,7 +327,7 @@ export default function ContactPage() {
               required
               className="rounded-full"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: sanitizeInput(e.target.value) })}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             />
             <Input
               type="email"
