@@ -1,15 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { checkRateLimit } from '@/lib/rate-limit'
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_dgCULfdW_K9VQXTRQicQgKUrqJbLxc1wd'
+const RESEND_API_KEY = 're_dgCULfdW_K9VQXTRQicQgKUrqJbLxc1wd'
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if Resend API key is configured
-    if (!RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not configured')
-      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
-    }
     
     // Get client IP
     const ip = request.ip || request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown'
@@ -79,25 +74,33 @@ ${attachments.length > 0 ? `Files attached: ${attachments.length}` : 'No files a
     const { Resend } = await import('resend')
     const resend = new Resend(RESEND_API_KEY)
     
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'criticalcollectivecontact@gmail.com',
+    const emailResult = await resend.emails.send({
+      from: 'Critical Collective <onboarding@resend.dev>',
+      to: ['criticalcollectivecontact@gmail.com'],
       replyTo: email,
       subject: getSubject(),
       text: emailContent,
       attachments: attachments.length > 0 ? attachments : undefined,
     })
+    
+    console.log('Email sent successfully:', emailResult)
 
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Error sending email:', error)
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined
-    })
+    
+    // Log more detailed error information
+    if (error && typeof error === 'object') {
+      console.error('Full error object:', JSON.stringify(error, null, 2))
+    }
+    
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error message:', errorMessage)
+    
     return NextResponse.json({ 
       error: 'Failed to send email', 
-      details: error instanceof Error ? error.message : 'Unknown error' 
+      details: errorMessage,
+      timestamp: new Date().toISOString()
     }, { status: 500 })
   }
 }
