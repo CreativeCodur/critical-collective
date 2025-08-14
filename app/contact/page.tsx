@@ -395,7 +395,7 @@ export default function ContactPage() {
             required
             className="rounded-xl p-4 border border-gray-300 min-h-[200px] w-full"
             value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: sanitizeInput(e.target.value) })}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           />
 
           {(formData.contactType === 'internship' || formData.contactType === 'fulltime') && (
