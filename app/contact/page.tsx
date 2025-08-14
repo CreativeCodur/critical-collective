@@ -92,13 +92,7 @@ export default function ContactPage() {
           throw new Error('Invalid sheet ID')
         }
         const response = await fetch(
-          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`,
-          {
-            headers: {
-              'Accept': 'text/csv',
-              'Cache-Control': 'no-cache'
-            }
-          }
+          `/api/sheets?sheetId=${SHEET_ID}`
         )
         
         if (!response.ok) {
@@ -136,20 +130,29 @@ export default function ContactPage() {
           const internshipTitles = rows.slice(1).map(row => row[0]).filter(title => title && title.trim() !== '')
           const internships: {[key: string]: string} = {}
           internshipTitles.forEach((title, index) => {
-            const cleanTitle = sanitizeInput(title.replace(/^"|"$/g, ''))
-            internships[`intern-${index}`] = cleanTitle
+            if (title && title.trim()) {
+              const cleanTitle = sanitizeInput(title.replace(/^"|"$/g, ''))
+              if (cleanTitle) {
+                internships[`intern-${index}`] = cleanTitle
+              }
+            }
           })
           
-          // Extract full-time positions from column 1 (skip header row)
-          const fullTimeTitles = rows.slice(1).map(row => row[1]).filter(title => title && title.trim() !== '')
-          const fullTime: {[key: string]: string} = {}
-          fullTimeTitles.forEach((title, index) => {
-            const cleanTitle = sanitizeInput(title.replace(/^"|"$/g, ''))
-            fullTime[`fulltime-${index}`] = cleanTitle
+          // Extract part-time positions from column 1 (skip header row)
+          const partTimeTitles = rows.slice(1).map(row => row[1]).filter(title => title && title.trim() !== '')
+          const partTime: {[key: string]: string} = {}
+          partTimeTitles.forEach((title, index) => {
+            if (title && title.trim()) {
+              const cleanTitle = sanitizeInput(title.replace(/^"|"$/g, ''))
+              if (cleanTitle) {
+                partTime[`parttime-${index}`] = cleanTitle
+              }
+            }
           })
           
+          console.log('Loaded positions:', { internships, partTime })
           setInternshipPositions(internships)
-          setFullTimePositions(fullTime)
+          setFullTimePositions(partTime)
         }
       } catch (error) {
         console.error('Error fetching positions:', error)
@@ -335,7 +338,7 @@ export default function ContactPage() {
           
           <Input
             type="tel"
-            placeholder="Phone Number (with country code, e.g., +1, +91)"
+            placeholder="Phone Number with country code"
             required
             className="rounded-full"
             value={formData.phone}
@@ -363,16 +366,23 @@ export default function ContactPage() {
             <Select
               value={formData.specificType}
               onValueChange={(value) => setFormData({ ...formData, specificType: value })}
+              disabled={loading && (formData.contactType === 'internship' || formData.contactType === 'fulltime')}
             >
               <SelectTrigger className="rounded-full">
-                <SelectValue placeholder="Please specify..." />
+                <SelectValue placeholder={loading && (formData.contactType === 'internship' || formData.contactType === 'fulltime') ? "Loading positions..." : "Please specify..."} />
               </SelectTrigger>
               <SelectContent className="bg-white border border-gray-200 shadow-lg z-50 max-h-60 overflow-y-auto">
-                {Object.entries(getOptionsForType(formData.contactType)).map(([key, value]) => (
-                  <SelectItem key={key} value={key} className="hover:bg-gray-100">
-                    {value}
+                {Object.entries(getOptionsForType(formData.contactType)).length > 0 ? (
+                  Object.entries(getOptionsForType(formData.contactType)).map(([key, value]) => (
+                    <SelectItem key={key} value={key} className="hover:bg-gray-100">
+                      {value}
+                    </SelectItem>
+                  ))
+                ) : (
+                  <SelectItem value="no-options" disabled className="text-gray-400">
+                    {loading ? "Loading..." : "No options available"}
                   </SelectItem>
-                ))}
+                )}
               </SelectContent>
             </Select>
           </div>
