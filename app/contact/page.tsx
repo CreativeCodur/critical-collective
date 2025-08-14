@@ -335,7 +335,7 @@ export default function ContactPage() {
               required
               className="rounded-full"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value.replace(/\s/g, '') })}
             />
           </div>
           
@@ -345,7 +345,7 @@ export default function ContactPage() {
             required
             className="rounded-full"
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: sanitizeInput(e.target.value) })}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\s/g, '') })}
           />
 
           <div className="grid md:grid-cols-2 gap-6">
