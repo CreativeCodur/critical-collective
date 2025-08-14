@@ -63,13 +63,12 @@ export default function CampaignsPage() {
               <div className="animate-on-load opacity-0">
                 <h2 className="text-4xl font-bold text-black mb-2">Active Campaigns</h2>
                 <h3 className="text-2xl text-gray-600 mb-6">Making Impact Now</h3>
-                <p className="text-lg text-gray-700 mb-8">Developing...</p>
-                <Link href="/contact">
+                <Link href="/about">
                   <Button
                     variant="outline"
                     className="border-black text-black hover:bg-black hover:text-white rounded-full px-6 bg-transparent"
                   >
-                    Join Our Campaigns
+                    Explore what we do
                   </Button>
                 </Link>
               </div>

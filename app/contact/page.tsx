@@ -18,6 +18,7 @@ type ContactType = 'internship' | 'fulltime' | 'question' | 'collaboration' | 'p
 interface ContactFormData {
   email: string
   name: string
+  phone: string
   contactType: ContactType
   specificType: string
   message: string
@@ -64,6 +65,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>({
     email: '',
     name: '',
+    phone: '',
     contactType: 'question' as ContactType,
     specificType: '',
     message: '',
@@ -245,6 +247,7 @@ export default function ContactPage() {
       const submitData = new FormData()
       submitData.append('name', formData.name)
       submitData.append('email', formData.email)
+      submitData.append('phone', formData.phone)
       submitData.append('contactType', formData.contactType)
       submitData.append('specificType', formData.specificType)
       submitData.append('specificTypeName', getOptionsForType(formData.contactType)[formData.specificType] || formData.specificType)
@@ -266,6 +269,7 @@ export default function ContactPage() {
         setFormData({
           email: '',
           name: '',
+          phone: '',
           contactType: 'question' as ContactType,
           specificType: '',
           message: '',
@@ -328,6 +332,15 @@ export default function ContactPage() {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
           </div>
+          
+          <Input
+            type="tel"
+            placeholder="Phone Number (with country code, e.g., +1, +91)"
+            required
+            className="rounded-full"
+            value={formData.phone}
+            onChange={(e) => setFormData({ ...formData, phone: sanitizeInput(e.target.value) })}
+          />
 
           <div className="grid md:grid-cols-2 gap-6">
             <Select
@@ -337,13 +350,13 @@ export default function ContactPage() {
               <SelectTrigger className="rounded-full">
                 <SelectValue placeholder="Contact Type" />
               </SelectTrigger>
-              <SelectContent className="bg-[url('/icons/OBOLOR0.jpg')] rounded bg-cover bg-no-repeat">
-                <SelectItem value="internship" className="bg-transparent text-white hover:bg-black/50">Internship Application</SelectItem>
-                <SelectItem value="fulltime" className="bg-transparent text-white hover:bg-black/50">Full-Time Application</SelectItem>
-                <SelectItem value="question" className="bg-transparent text-white hover:bg-black/50">Question</SelectItem>
-                <SelectItem value="collaboration" className="bg-transparent text-white hover:bg-black/50">Collaboration</SelectItem>
-                <SelectItem value="partnership" className="bg-transparent text-white hover:bg-black/50">Partnership</SelectItem>
-                <SelectItem value="interview" className="bg-transparent text-white hover:bg-black/50">Interview Request</SelectItem>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg z-50 max-h-60 overflow-y-auto">
+                <SelectItem value="internship" className="hover:bg-gray-100">Internship Application</SelectItem>
+                <SelectItem value="fulltime" className="hover:bg-gray-100">Part-Time Application</SelectItem>
+                <SelectItem value="question" className="hover:bg-gray-100">Question</SelectItem>
+                <SelectItem value="collaboration" className="hover:bg-gray-100">Collaboration</SelectItem>
+                <SelectItem value="partnership" className="hover:bg-gray-100">Partnership</SelectItem>
+                <SelectItem value="interview" className="hover:bg-gray-100">Interview Request</SelectItem>
               </SelectContent>
             </Select>
 
@@ -354,9 +367,9 @@ export default function ContactPage() {
               <SelectTrigger className="rounded-full">
                 <SelectValue placeholder="Please specify..." />
               </SelectTrigger>
-              <SelectContent className="bg-[url('/icons/OBOLOR0.jpg')] bg-cover bg-no-repeat">
+              <SelectContent className="bg-white border border-gray-200 shadow-lg z-50 max-h-60 overflow-y-auto">
                 {Object.entries(getOptionsForType(formData.contactType)).map(([key, value]) => (
-                  <SelectItem key={key} value={key} className="bg-transparent text-white hover:bg-black/50">
+                  <SelectItem key={key} value={key} className="hover:bg-gray-100">
                     {value}
                   </SelectItem>
                 ))}

@@ -93,12 +93,23 @@ export default function SpotlightPage() {
     fetchArticles()
   }, [])
 
+  const getVisibleArticles = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return 1 // mobile
+      if (window.innerWidth < 1024) return 2 // tablet
+      return 3 // desktop
+    }
+    return 3
+  }
+
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % Math.max(1, articles.length - 2))
+    const visible = getVisibleArticles()
+    setCurrentIndex((prev) => (prev + 1) % Math.max(1, articles.length - visible + 1))
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + Math.max(1, articles.length - 2)) % Math.max(1, articles.length - 2))
+    const visible = getVisibleArticles()
+    setCurrentIndex((prev) => (prev - 1 + Math.max(1, articles.length - visible + 1)) % Math.max(1, articles.length - visible + 1))
   }
 
   const getExcerpt = (content: string) => {
@@ -168,11 +179,13 @@ export default function SpotlightPage() {
                 <div className="overflow-hidden mx-2 sm:mx-8">
                   <div 
                     className="flex transition-transform duration-300 ease-in-out"
-                    style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+                    style={{ 
+                      transform: `translateX(-${currentIndex * (window.innerWidth < 640 ? 100 : window.innerWidth < 1024 ? 50 : 33.333)}%)` 
+                    }}
                   >
                     {articles.map((article, index) => (
                       <div key={index} className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
-                        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+                        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col min-h-[400px]">
                           <div className="bg-yellow-300 px-3 py-1">
                             <span className="text-xs font-bold text-black">ARTICLE</span>
                           </div>
@@ -188,7 +201,7 @@ export default function SpotlightPage() {
                             )}
                           </div>
                           <div className="p-3 sm:p-4 flex flex-col flex-grow">
-                            <h3 className="font-bold text-black mb-2 text-sm sm:text-base leading-tight line-clamp-2">{article.title}</h3>
+                            <h3 className="font-bold text-black mb-2 text-sm sm:text-base leading-tight">{article.title}</h3>
                             <p className="text-xs sm:text-sm text-gray-600 mb-3 leading-relaxed flex-grow">
                               {getExcerpt(article.content).split('\n\n').map((paragraph, i) => (
                                 <span key={i} className="block mb-2 last:mb-0">

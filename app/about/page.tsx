@@ -122,14 +122,14 @@ export default function AboutPage() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex justify-center items-center">
               <div className="text-center">
-                <h1 className="text-8xl lg:text-9xl font-bold text-black mb-12 leading-tight" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-black mb-8 leading-tight" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                   About
                   <br />
                   Critical
                   <br />
                   Collective
                 </h1>
-                <p className="text-xl text-gray-700 mb-12 leading-relaxed max-w-2xl mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
+                <p className="text-base sm:text-lg text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
                   Critical Collective is a youth-led think tank dedicated to fostering free and critical thinking in the face of widespread disinformation. We believe that truth is a public good, and that challenging false narratives requires bold, independent analysis grounded in integrity and intellectual curiosity. Through research, advocacy, and open dialogue, we confront misinformation across media, policy, and public discourse.
                 </p>
               </div>
