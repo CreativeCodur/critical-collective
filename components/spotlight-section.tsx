@@ -11,10 +11,10 @@ export function SpotlightSection() {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-black mb-8" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-            Spotlight
+            Insights
           </h2>
           <p className="text-lg text-black max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-           Critical Collective shines a light on misinformation, challenges false narratives, and celebrates the pursuit of truth. Discover articles, essays, and resources that empower youth and the public to think critically and engage boldly.
+           Discover our insights into today (and tomorrow's) criticl challenges to break through the noise and make sense of the chaos.
           </p>
         </div>
 

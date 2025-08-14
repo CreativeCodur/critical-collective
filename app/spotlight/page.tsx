@@ -240,8 +240,7 @@ export default function SpotlightPage() {
                 {/* Large Brown Speech Bubble */}
                 <div className="bg-amber-700 rounded-3xl p-6 sm:p-8 text-white relative">
                   <p className="text-base sm:text-lg leading-relaxed">
-                    At Critical Collective, you'll find a rotating cast of Opportunities, Outside Experts, and Professionals who are
-                    serious about Advocacy—and just about nothing else.
+                    At Critical Collective, you'll find a rotating cast of Passionate Students and Outside Experts who are serious about Sparking Critical Societal and Cultural Change.
                   </p>
                   {/* Speech bubble tail */}
                   <div className="absolute -left-4 top-8 w-6 sm:w-8 h-6 sm:h-8 bg-amber-700 rounded-full"></div>
