@@ -4,6 +4,7 @@ import React from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface JobPosting {
   title: string
@@ -14,10 +15,12 @@ interface JobPosting {
 
 export function CareersCarousel() {
   const internshipRef = useRef<HTMLDivElement>(null)
-  const fullTimeRef = useRef<HTMLDivElement>(null)
+  const partTimeRef = useRef<HTMLDivElement>(null)
   const [internships, setInternships] = useState<JobPosting[]>([])
-  const [fullTimeRoles, setFullTimeRoles] = useState<JobPosting[]>([])
+  const [partTimeRoles, setPartTimeRoles] = useState<JobPosting[]>([])
   const [loading, setLoading] = useState(true)
+  const [internshipAutoScroll, setInternshipAutoScroll] = useState(true)
+  const [partTimeAutoScroll, setPartTimeAutoScroll] = useState(true)
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -67,17 +70,17 @@ export function CareersCarousel() {
             description: `Join our team as a ${title.replace(/^"|"$/g, '')} and contribute to our mission of promoting critical thinking.`
           }))
           
-          // Extract full-time positions from column 1 (skip header row)
-          const fullTimeTitles = rows.slice(1).map(row => row[1]).filter(title => title && title.trim() !== '')
-          const fetchedFullTime: JobPosting[] = fullTimeTitles.map(title => ({
+          // Extract part-time positions from column 1 (skip header row)
+          const partTimeTitles = rows.slice(1).map(row => row[1]).filter(title => title && title.trim() !== '')
+          const fetchedPartTime: JobPosting[] = partTimeTitles.map(title => ({
             title: title.replace(/^"|"$/g, ''),
-            type: "Full-time",
+            type: "Part-time",
             location: "Remote",
             description: `Join our team as a ${title.replace(/^"|"$/g, '')} and help us combat misinformation through professional expertise.`
           }))
           
           setInternships(fetchedInternships)
-          setFullTimeRoles(fetchedFullTime)
+          setPartTimeRoles(fetchedPartTime)
         }
       } catch (error) {
         console.error('Error fetching jobs:', error)
@@ -101,23 +104,37 @@ export function CareersCarousel() {
       }
     }
 
-    const internshipInterval = setInterval(() => {
+    const internshipInterval = internshipAutoScroll ? setInterval(() => {
       if (internshipRef.current) {
         autoScroll(internshipRef.current, 'left')
       }
-    }, 16) // 60fps for smoother animation
+    }, 16) : null
 
-    const fullTimeInterval = setInterval(() => {
-      if (fullTimeRef.current) {
-        autoScroll(fullTimeRef.current, 'right')
+    const partTimeInterval = partTimeAutoScroll ? setInterval(() => {
+      if (partTimeRef.current) {
+        autoScroll(partTimeRef.current, 'right')
       }
-    }, 16) // 60fps for smoother animation
+    }, 16) : null
 
     return () => {
-      clearInterval(internshipInterval)
-      clearInterval(fullTimeInterval)
+      if (internshipInterval) clearInterval(internshipInterval)
+      if (partTimeInterval) clearInterval(partTimeInterval)
     }
-  }, [])
+  }, [internshipAutoScroll, partTimeAutoScroll])
+
+  const scrollInternships = (direction: 'left' | 'right') => {
+    if (internshipRef.current) {
+      const scrollAmount = direction === 'left' ? -300 : 300
+      internshipRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
+
+  const scrollPartTime = (direction: 'left' | 'right') => {
+    if (partTimeRef.current) {
+      const scrollAmount = direction === 'left' ? -300 : 300
+      partTimeRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
 
   const renderJobCards = (jobs: JobPosting[]) => {
     return jobs.map((job, index) => (
@@ -151,31 +168,71 @@ export function CareersCarousel() {
 
   return (
     <div className="py-12 sm:py-16 md:py-20">
-      <div id="internship-roles" className="mb-12 sm:mb-16">
+      <div id="internship-roles" className="mb-12 sm:mb-16 relative">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 px-4">Internship Opportunities</h2>
-        <div 
-          ref={internshipRef}
-          className="flex overflow-x-hidden gap-3 sm:gap-6 py-4"
-          style={{ 
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-            maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
-          }}
-        >
-          {renderJobCards([...internships, ...internships, ...internships, ...internships])}
+        <div className="relative">
+          <button
+            onClick={() => scrollInternships('left')}
+            onMouseEnter={() => setInternshipAutoScroll(false)}
+            onMouseLeave={() => setInternshipAutoScroll(true)}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => scrollInternships('right')}
+            onMouseEnter={() => setInternshipAutoScroll(false)}
+            onMouseLeave={() => setInternshipAutoScroll(true)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+          <div 
+            ref={internshipRef}
+            className="flex overflow-x-hidden gap-3 sm:gap-6 py-4"
+            style={{ 
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+            }}
+            onMouseEnter={() => setInternshipAutoScroll(false)}
+            onMouseLeave={() => setInternshipAutoScroll(true)}
+          >
+            {renderJobCards([...internships, ...internships, ...internships, ...internships])}
+          </div>
         </div>
       </div>
 
-      <div id="full-time-roles">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 px-4">Full-Time Positions</h2>
-        <div 
-          ref={fullTimeRef}
-          className="flex overflow-x-hidden gap-3 sm:gap-6 py-4"
-          style={{ 
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-            maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
-          }}
-        >
-          {renderJobCards([...fullTimeRoles, ...fullTimeRoles, ...fullTimeRoles, ...fullTimeRoles])}
+      <div id="part-time-roles" className="relative">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8 px-4">Part-Time Positions</h2>
+        <div className="relative">
+          <button
+            onClick={() => scrollPartTime('left')}
+            onMouseEnter={() => setPartTimeAutoScroll(false)}
+            onMouseLeave={() => setPartTimeAutoScroll(true)}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => scrollPartTime('right')}
+            onMouseEnter={() => setPartTimeAutoScroll(false)}
+            onMouseLeave={() => setPartTimeAutoScroll(true)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-2 shadow-lg hover:bg-gray-50"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+          <div 
+            ref={partTimeRef}
+            className="flex overflow-x-hidden gap-3 sm:gap-6 py-4"
+            style={{ 
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+            }}
+            onMouseEnter={() => setPartTimeAutoScroll(false)}
+            onMouseLeave={() => setPartTimeAutoScroll(true)}
+          >
+            {renderJobCards([...partTimeRoles, ...partTimeRoles, ...partTimeRoles, ...partTimeRoles])}
+          </div>
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-md animate-on-load opacity-0" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-              We are a youth-led think tank dedicated to fostering free and critical thinking in the face of widespread disinformation. Truth is a public good, and challenging false narratives requires bold, independent analysis grounded in integrity and curiosity.
+              We are a youth-led think tank dedicated to fostering productive conversations by enabling free and critical thought through the analysis of perspectives from both sides of the political spectrum. We seek to find the truth from our analysis – forming our own perspective and defining our own solutions to today's most pressing issues.
             </p>
 
             <div className="animate-on-load opacity-0">
@@ -63,7 +63,7 @@ export function HeroSection() {
           <div className="relative animate-on-load opacity-0 w-full h-96">
             <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
               {/* Large pink cloud */}
-              <g transform="translate(50,80)">
+              <g transform="translate(30,50) scale(2.2)">
                 <ellipse cx="60" cy="40" rx="50" ry="30" fill="#FFB3D9"/>
                 <ellipse cx="30" cy="50" rx="35" ry="25" fill="#FFB3D9"/>
                 <ellipse cx="90" cy="50" rx="40" ry="28" fill="#FFB3D9"/>
@@ -74,7 +74,7 @@ export function HeroSection() {
               </g>
               
               {/* Medium blue cloud */}
-              <g transform="translate(200,40)">
+              <g transform="translate(180,20) scale(1.8)">
                 <ellipse cx="40" cy="30" rx="35" ry="20" fill="#B3D9FF"/>
                 <ellipse cx="20" cy="35" rx="25" ry="18" fill="#B3D9FF"/>
                 <ellipse cx="60" cy="35" rx="28" ry="20" fill="#B3D9FF"/>
@@ -85,7 +85,7 @@ export function HeroSection() {
               </g>
               
               {/* Small green cloud */}
-              <g transform="translate(280,140)">
+              <g transform="translate(250,120) scale(1.7)">
                 <ellipse cx="30" cy="25" rx="25" ry="15" fill="#B3FFB3"/>
                 <ellipse cx="15" cy="30" rx="18" ry="12" fill="#B3FFB3"/>
                 <ellipse cx="45" cy="30" rx="20" ry="14" fill="#B3FFB3"/>
@@ -96,7 +96,7 @@ export function HeroSection() {
               </g>
               
               {/* Medium yellow cloud */}
-              <g transform="translate(120,180)">
+              <g transform="translate(100,160) scale(1.9)">
                 <ellipse cx="35" cy="25" rx="30" ry="18" fill="#FFFF99"/>
                 <ellipse cx="18" cy="30" rx="22" ry="15" fill="#FFFF99"/>
                 <ellipse cx="52" cy="30" rx="25" ry="17" fill="#FFFF99"/>

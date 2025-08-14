@@ -21,14 +21,20 @@ export default function CampaignsPage() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="flex justify-center animate-on-load opacity-0">
-                <div className="relative w-24 h-20">
-                  {/* Campaign megaphone icon */}
-                  <div className="absolute top-4 left-0 w-3 h-12 bg-blue-500 rounded-full"></div>
-                  <div className="absolute top-2 left-3 w-4 h-16 bg-blue-400 rounded-full"></div>
-                  <div className="absolute top-0 left-7 w-5 h-20 bg-purple-400 rounded-full"></div>
-                  <div className="absolute top-2 left-12 w-4 h-16 bg-purple-500 rounded-full"></div>
-                  <div className="absolute top-4 left-16 w-3 h-12 bg-blue-300 rounded-full"></div>
-                </div>
+                <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                  {/* Figure body */}
+                  <ellipse cx="60" cy="90" rx="15" ry="25" fill="#4A5568"/>
+                  {/* Figure head */}
+                  <circle cx="60" cy="40" r="12" fill="#F7FAFC"/>
+                  {/* Arms */}
+                  <line x1="45" y1="70" x2="35" y2="50" stroke="#4A5568" strokeWidth="3" strokeLinecap="round"/>
+                  <line x1="75" y1="70" x2="85" y2="50" stroke="#4A5568" strokeWidth="3" strokeLinecap="round"/>
+                  {/* Sign */}
+                  <rect x="25" y="35" width="30" height="20" fill="#FFF" stroke="#000" strokeWidth="2"/>
+                  {/* No icon (circle with slash) */}
+                  <circle cx="40" cy="45" r="6" fill="none" stroke="#E53E3E" strokeWidth="2"/>
+                  <line x1="35" y1="40" x2="45" y2="50" stroke="#E53E3E" strokeWidth="2"/>
+                </svg>
               </div>
               <div className="animate-on-load opacity-0">
                 <h2 className="text-4xl font-bold text-black mb-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
@@ -38,15 +44,8 @@ export default function CampaignsPage() {
                   Truth in Action
                 </h3>
                 <p className="text-lg text-gray-700 mb-6" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-                  Critical Collective runs targeted campaigns to combat misinformation, promote media literacy, and advocate for truth in public discourse. Our campaigns mobilize communities, influence policy, and create lasting change.
+                  Critical Collective runs targeted campaigns to combat today's most pressing issues and tomorrow's most urgent threats. Our goal is to mobilize like-minded individuals and advance action through advocacy efforts both online and in-person.
                 </p>
-                <ul className="space-y-2 text-gray-700 mb-8" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-                  <li>• Media literacy initiatives</li>
-                  <li>• Fact-checking campaigns</li>
-                  <li>• Policy advocacy efforts</li>
-                  <li>• Community engagement programs</li>
-                  <li>• Digital truth campaigns</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -73,13 +72,7 @@ export default function CampaignsPage() {
               <div className="animate-on-load opacity-0">
                 <h2 className="text-4xl font-bold text-black mb-2">Active Campaigns</h2>
                 <h3 className="text-2xl text-gray-600 mb-6">Making Impact Now</h3>
-                <p className="text-lg text-gray-700 mb-6">Our current campaigns focus on:</p>
-                <ul className="space-y-2 text-gray-700 mb-8">
-                  <li>• Truth in Elections: Combating electoral misinformation</li>
-                  <li>• Digital Literacy: Teaching critical evaluation of online content</li>
-                  <li>• Policy Transparency: Advocating for clear, factual policy communication</li>
-                  <li>• Youth Engagement: Empowering young voices in truth-telling</li>
-                </ul>
+                <p className="text-lg text-gray-700 mb-8">Developing...</p>
                 <Link href="/contact">
                   <Button
                     variant="outline"
@@ -93,42 +86,7 @@ export default function CampaignsPage() {
           </div>
         </section>
 
-        {/* Campaign Impact Section */}
-        <section className="py-20 bg-blue-100">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-4xl font-bold text-black mb-8 animate-on-load opacity-0">Campaign Impact</h2>
-            <div className="grid md:grid-cols-2 gap-12 mb-12">
-              <div className="animate-on-load opacity-0">
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Our campaigns have reached millions of people, influenced policy decisions, and created measurable 
-                  improvements in media literacy and critical thinking skills.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  We measure success not just in reach, but in real behavioral change and improved information 
-                  consumption habits.
-                </p>
-              </div>
-            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {["Education", "Policy", "Community", "Digital"].map((category, index) => (
-                <div key={category} className="animate-on-load opacity-0" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <h3 className="text-xl font-bold text-black mb-4">{category}</h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {category === "Education" &&
-                      "We've trained thousands of educators and students in media literacy, critical thinking, and fact-checking techniques through workshops, curricula, and digital resources."}
-                    {category === "Policy" &&
-                      "Our policy campaigns have influenced legislation on digital transparency, platform accountability, and information integrity at local, state, and federal levels."}
-                    {category === "Community" &&
-                      "We've built grassroots networks of truth advocates, creating local chapters that combat misinformation in their communities through events and outreach."}
-                    {category === "Digital" &&
-                      "Our digital campaigns leverage social media, online tools, and technology to counter false narratives and promote accurate information in real-time."}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Get Involved Section */}
         <section className="py-20 bg-white">
@@ -147,14 +105,14 @@ export default function CampaignsPage() {
               <div className="animate-on-load opacity-0">
                 <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                   Every campaign needs passionate advocates. Whether you're a student, professional, or concerned citizen, 
-                  there's a place for you in our movement for truth and transparency.
+                  there's a place for you in our movement toward truth and transparency.
                 </p>
                 <Link href="/contact">
                   <Button
                     variant="outline"
                     className="border-black text-black hover:bg-black hover:text-white rounded-full px-6 bg-transparent"
                   >
-                    Start Your Campaign
+                    Join Our Campaigns
                   </Button>
                 </Link>
               </div>

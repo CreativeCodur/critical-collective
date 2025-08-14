@@ -75,7 +75,7 @@ export function MobileMenu({ hasScrolled }: MobileMenuProps) {
               }`}
               onClick={() => setIsOpen(false)}
             >
-              Spotlight
+              Insights
             </Link>
             <Link
               href="/careers"

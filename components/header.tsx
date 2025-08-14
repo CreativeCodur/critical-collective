@@ -55,7 +55,7 @@ export function Header() {
             <Link href="/spotlight" className={`transition-colors font-medium ${
               hasScrolled ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'
             }`} style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
-              Spotlight
+              Insights
             </Link>
             <Link href="/careers" className={`transition-colors font-medium ${
               hasScrolled ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'

@@ -15,11 +15,11 @@ export function CareersHero() {
             variant="outline"
             className="border-black text-black hover:bg-black hover:text-white rounded-full px-4 text-sm bg-transparent"
             onClick={() => {
-              const fullTimeSection = document.getElementById("full-time-roles")
-              fullTimeSection?.scrollIntoView({ behavior: "smooth", block: "start" })
+              const partTimeSection = document.getElementById("part-time-roles")
+              partTimeSection?.scrollIntoView({ behavior: "smooth", block: "start" })
             }}
           >
-            Full-Time Roles
+            Part-Time Positions
           </Button>
           <Button
             variant="outline"

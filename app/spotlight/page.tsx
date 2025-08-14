@@ -102,7 +102,16 @@ export default function SpotlightPage() {
   }
 
   const getExcerpt = (content: string) => {
-    return content.length > 150 ? content.substring(0, 150) + '...' : content
+    const words = content.split(' ')
+    if (words.length <= 30) return content
+    
+    const chunks = []
+    for (let i = 0; i < words.length; i += 6) {
+      chunks.push(words.slice(i, i + 6).join(' '))
+    }
+    
+    const excerpt = chunks.slice(0, 5).join('\n\n')
+    return excerpt.length > 150 ? excerpt.substring(0, 150) + '...' : excerpt
   }
 
   return (
@@ -115,10 +124,10 @@ export default function SpotlightPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
               <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-black mb-4 sm:mb-8" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                Spotlight
+                Insights
               </h1>
               <p className="text-base sm:text-lg text-black max-w-xl sm:max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-        Critical Collective shines a light on misinformation, challenges false narratives, and celebrates the pursuit of truth. Discover articles, essays, and resources that empower youth and the public to think critically and engage boldly.        
+                Discover our insights into today (and tomorrow's) critical challenges to break through the noise and make sense of the chaos here – from news articles & op-eds to podcast episodes and social media content.
               </p>
             </div>
           </div>
@@ -156,18 +165,18 @@ export default function SpotlightPage() {
                 )}
                 
                 {/* Articles Grid */}
-                <div className="overflow-hidden mx-8">
+                <div className="overflow-hidden mx-2 sm:mx-8">
                   <div 
                     className="flex transition-transform duration-300 ease-in-out"
                     style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
                   >
                     {articles.map((article, index) => (
-                      <div key={index} className="w-1/3 flex-shrink-0 px-2">
-                        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow h-full">
+                      <div key={index} className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
+                        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
                           <div className="bg-yellow-300 px-3 py-1">
                             <span className="text-xs font-bold text-black">ARTICLE</span>
                           </div>
-                          <div className="bg-gray-100 h-48 flex items-center justify-center overflow-hidden">
+                          <div className="bg-gray-100 h-32 sm:h-40 lg:h-48 flex items-center justify-center overflow-hidden">
                             {article.image ? (
                               <img 
                                 src={article.image} 
@@ -178,14 +187,20 @@ export default function SpotlightPage() {
                               <span className="text-gray-500 text-sm">Article Image</span>
                             )}
                           </div>
-                          <div className="p-4 flex flex-col flex-grow">
-                            <h3 className="font-bold text-black mb-2 text-sm leading-tight">{article.title}</h3>
-                            <p className="text-xs text-gray-600 mb-3 leading-relaxed flex-grow">{getExcerpt(article.content)}</p>
+                          <div className="p-3 sm:p-4 flex flex-col flex-grow">
+                            <h3 className="font-bold text-black mb-2 text-sm sm:text-base leading-tight line-clamp-2">{article.title}</h3>
+                            <p className="text-xs sm:text-sm text-gray-600 mb-3 leading-relaxed flex-grow">
+                              {getExcerpt(article.content).split('\n\n').map((paragraph, i) => (
+                                <span key={i} className="block mb-2 last:mb-0">
+                                  {paragraph}
+                                </span>
+                              ))}
+                            </p>
                             <Link href={`/spotlight/${article.id}`}>
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="border-black text-black hover:bg-black hover:text-white rounded-full px-4 text-xs bg-transparent w-full"
+                                className="border-black text-black hover:bg-black hover:text-white rounded-full px-4 text-xs bg-transparent w-full mt-auto"
                               >
                                 Read More
                               </Button>
