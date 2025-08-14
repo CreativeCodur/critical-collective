@@ -28,13 +28,7 @@ export default function SpotlightPage() {
           throw new Error('Invalid sheet ID')
         }
         const response = await fetch(
-          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`,
-          {
-            headers: {
-              'Accept': 'text/csv',
-              'Cache-Control': 'no-cache'
-            }
-          }
+          `/api/sheets?sheetId=${SHEET_ID}`
         )
         
         if (!response.ok) {

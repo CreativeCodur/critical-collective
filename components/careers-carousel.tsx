@@ -24,7 +24,7 @@ export function CareersCarousel() {
       try {
         const SHEET_ID = '1n8qKUFx2y_MO5tC9lGbWoJMNygJPwhZly-p5PAAni3U'
         const response = await fetch(
-          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`
+          `/api/sheets?sheetId=${SHEET_ID}`
         )
         
         if (!response.ok) {
