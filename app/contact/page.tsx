@@ -282,11 +282,14 @@ export default function ContactPage() {
         const errorData = await response.json()
         alert(`Rate limit exceeded: ${errorData.error}`)
       } else {
-        throw new Error('Failed to submit')
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }))
+        console.error('Server response:', response.status, errorData)
+        throw new Error(`Server error (${response.status}): ${errorData.error || 'Failed to submit'}`)
       }
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert('Failed to submit form. Please try again.')
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
+      alert(`Failed to submit form: ${errorMessage}. Please try again.`)
     } finally {
       setSubmitting(false)
     }
