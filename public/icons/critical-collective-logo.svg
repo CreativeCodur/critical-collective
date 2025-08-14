@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" width="48" height="48">
   <rect width="768" height="768" fill="#F5F5F5"/>
   <g>
-    <rect x="192" y="192" width="384" height="384" rx="48" fill="#fff" stroke="#000" stroke-width="24"/>
-    <polyline points="320,384 384,448 480,352" fill="none" stroke="#000" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M200 300 C200 250, 250 200, 300 200 L500 200 C550 200, 600 250, 600 300 L600 400 C600 450, 550 500, 500 500 L350 500 L280 550 L320 500 L300 500 C250 500, 200 450, 200 400 Z" fill="#fff" stroke="#000" stroke-width="24"/>
+    <circle cx="320" cy="350" r="12" fill="#000"/>
+    <circle cx="400" cy="350" r="12" fill="#000"/>
+    <circle cx="480" cy="350" r="12" fill="#000"/>
   </g>
 </svg>
