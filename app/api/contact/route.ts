@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { checkRateLimit } from '@/lib/rate-limit'
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY
+const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_dgCULfdW_K9VQXTRQicQgKUrqJbLxc1wd'
 
 export async function POST(request: NextRequest) {
   try {
