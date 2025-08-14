@@ -21,20 +21,11 @@ export default function CampaignsPage() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="flex justify-center animate-on-load opacity-0">
-                <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                  {/* Figure body */}
-                  <ellipse cx="60" cy="90" rx="15" ry="25" fill="#4A5568"/>
-                  {/* Figure head */}
-                  <circle cx="60" cy="40" r="12" fill="#F7FAFC"/>
-                  {/* Arms */}
-                  <line x1="45" y1="70" x2="35" y2="50" stroke="#4A5568" strokeWidth="3" strokeLinecap="round"/>
-                  <line x1="75" y1="70" x2="85" y2="50" stroke="#4A5568" strokeWidth="3" strokeLinecap="round"/>
-                  {/* Sign */}
-                  <rect x="25" y="35" width="30" height="20" fill="#FFF" stroke="#000" strokeWidth="2"/>
-                  {/* No icon (circle with slash) */}
-                  <circle cx="40" cy="45" r="6" fill="none" stroke="#E53E3E" strokeWidth="2"/>
-                  <line x1="35" y1="40" x2="45" y2="50" stroke="#E53E3E" strokeWidth="2"/>
-                </svg>
+                <img 
+                  src="/Screenshot 2025-08-14 104952.png" 
+                  alt="Our Campaigns" 
+                  className="max-w-full h-auto rounded-lg shadow-lg"
+                />
               </div>
               <div className="animate-on-load opacity-0">
                 <h2 className="text-4xl font-bold text-black mb-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
