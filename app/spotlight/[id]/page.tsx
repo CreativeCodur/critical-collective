@@ -23,7 +23,7 @@ export default function ArticlePage() {
       try {
         const SHEET_ID = '1v2Ji1p66H8C9X1q056xlHbC-0cjD92QddfEXzQFDM7k'
         const response = await fetch(
-          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`
+          `/api/sheets?sheetId=${SHEET_ID}`
         )
         
         if (!response.ok) {
