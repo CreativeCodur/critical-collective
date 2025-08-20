@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 relative ${
-      hasScrolled ? 'bg-black' : 'bg-white'
+      hasScrolled ? 'bg-blue-500' : 'bg-white'
     }`}>
       {/* Gradient line */}
       <div className={`absolute bottom-0 left-0 w-full h-[2px] transition-opacity duration-300 ${
@@ -43,22 +43,22 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/campaigns" className={`transition-colors font-medium ${
-              hasScrolled ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'
+              hasScrolled ? 'text-white hover:text-yellow-200' : 'text-gray-900 hover:text-blue-600'
             }`} style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
               Campaigns
             </Link>
             <Link href="/about" className={`transition-colors font-medium ${
-              hasScrolled ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'
+              hasScrolled ? 'text-white hover:text-yellow-200' : 'text-gray-900 hover:text-blue-600'
             }`} style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
               About
             </Link>
             <Link href="/spotlight" className={`transition-colors font-medium ${
-              hasScrolled ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'
+              hasScrolled ? 'text-white hover:text-yellow-200' : 'text-gray-900 hover:text-blue-600'
             }`} style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
               Insights
             </Link>
             <Link href="/careers" className={`transition-colors font-medium ${
-              hasScrolled ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'
+              hasScrolled ? 'text-white hover:text-yellow-200' : 'text-gray-900 hover:text-blue-600'
             }`} style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}>
               Careers
             </Link>

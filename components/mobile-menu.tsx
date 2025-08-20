@@ -39,7 +39,7 @@ export function MobileMenu({ hasScrolled }: MobileMenuProps) {
         className={`fixed left-0 right-0 top-[64px] transform transition-all duration-300 ${
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
         } ${
-          hasScrolled ? 'bg-black border-t border-gray-800' : 'bg-white border-t border-gray-100'
+          hasScrolled ? 'bg-blue-500 border-t border-blue-600' : 'bg-white border-t border-gray-100'
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 py-4">
@@ -48,7 +48,7 @@ export function MobileMenu({ hasScrolled }: MobileMenuProps) {
               href="/campaigns"
               className={`block py-2 px-3 rounded-lg text-lg transition-colors font-medium ${
                 hasScrolled 
-                  ? 'text-white hover:text-blue-300 hover:bg-white/10' 
+                  ? 'text-white hover:text-yellow-200 hover:bg-white/10' 
                   : 'text-gray-900 hover:text-blue-600 hover:bg-black/5'
               }`}
               onClick={() => setIsOpen(false)}
@@ -59,7 +59,7 @@ export function MobileMenu({ hasScrolled }: MobileMenuProps) {
               href="/about"
               className={`block py-2 px-3 rounded-lg text-lg transition-colors font-medium ${
                 hasScrolled 
-                  ? 'text-white hover:text-blue-300 hover:bg-white/10' 
+                  ? 'text-white hover:text-yellow-200 hover:bg-white/10' 
                   : 'text-gray-900 hover:text-blue-600 hover:bg-black/5'
               }`}
               onClick={() => setIsOpen(false)}
@@ -70,7 +70,7 @@ export function MobileMenu({ hasScrolled }: MobileMenuProps) {
               href="/spotlight"
               className={`block py-2 px-3 rounded-lg text-lg transition-colors font-medium ${
                 hasScrolled 
-                  ? 'text-white hover:text-blue-300 hover:bg-white/10' 
+                  ? 'text-white hover:text-yellow-200 hover:bg-white/10' 
                   : 'text-gray-900 hover:text-blue-600 hover:bg-black/5'
               }`}
               onClick={() => setIsOpen(false)}
@@ -81,7 +81,7 @@ export function MobileMenu({ hasScrolled }: MobileMenuProps) {
               href="/careers"
               className={`block py-2 px-3 rounded-lg text-lg transition-colors font-medium ${
                 hasScrolled 
-                  ? 'text-white hover:text-blue-300 hover:bg-white/10' 
+                  ? 'text-white hover:text-yellow-200 hover:bg-white/10' 
                   : 'text-gray-900 hover:text-blue-600 hover:bg-black/5'
               }`}
               onClick={() => setIsOpen(false)}
