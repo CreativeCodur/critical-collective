@@ -130,7 +130,7 @@ export default function AboutPage() {
                   Collective
                 </h1>
                 <p className="text-base sm:text-lg text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-                  Critical Collective is a youth-led think tank dedicated to fostering free and critical thinking in the face of widespread disinformation. We believe that truth is a public good, and that challenging false narratives requires bold, independent analysis grounded in integrity and intellectual curiosity. Through research, advocacy, and open dialogue, we confront misinformation across media, policy, and public discourse.
+                  Critical Collective is a student-led think tank dedicated to fostering free and critical thinking in the face of widespread disinformation. We believe that truth is a public good, and that challenging false narratives requires bold, independent analysis grounded in integrity and intellectual curiosity. Through research, advocacy, and open dialogue, we confront misinformation across media, policy, and public discourse.
                 </p>
               </div>
             </div>
