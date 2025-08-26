@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Critical Collective',
-  description: 'Critical Collective is a youth-led think tank dedicated to fostering free and critical thinking in the face of widespread disinformation. We believe that truth is a public good, and that challenging false narratives requires bold, independent analysis grounded in integrity and intellectual curiosity. Through research, advocacy, and open dialogue, Critical Collective confronts misinformation across media, policy, and public discourse.'
+  description: 'Critical Collective is a student-led think tank dedicated to fostering free and critical thinking in the face of widespread disinformation. We believe that truth is a public good, and that challenging false narratives requires bold, independent analysis grounded in integrity and intellectual curiosity. Through research, advocacy, and open dialogue, Critical Collective confronts misinformation across media, policy, and public discourse.'
 }
 
 export default function RootLayout({
