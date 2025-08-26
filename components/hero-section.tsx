@@ -36,7 +36,7 @@ export function HeroSection() {
             <h1 className="text-6xl lg:text-8xl font-bold text-black mb-8 leading-tight" style={{ fontFamily: 'DM Sans, sans-serif' }}>
               <span className="block animate-on-load opacity-0">Critical Collective</span>
               <span className="block animate-on-load opacity-0 text-3xl font-semibold" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                Youth-Led. Truth-Driven.
+                Student-Led. Truth-Driven.
               </span>
               <span className="block animate-on-load opacity-0 text-3xl font-semibold" style={{ color: 'white', fontFamily: 'DM Sans, sans-serif' }}>
                 Careers
