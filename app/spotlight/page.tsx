@@ -138,7 +138,7 @@ export default function SpotlightPage() {
                 Insights
               </h1>
               <p className="text-base sm:text-lg text-black max-w-xl sm:max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-                Discover our insights into today (and tomorrow's) critical challenges to break through the noise and make sense of the chaos here – from news articles & op-eds to podcast episodes and social media content.
+                Discover our insights into today's — and tomorrow's — most critical challenges to break through the noise and make sense of the chaos. From news articles & op-eds to podcast episodes and social media content, we have you covered.
               </p>
             </div>
           </div>
