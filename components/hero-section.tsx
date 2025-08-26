@@ -44,7 +44,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-md animate-on-load opacity-0" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-              We are a youth-led think tank dedicated to fostering productive conversations by enabling free and critical thought through the analysis of perspectives from both sides of the political spectrum. We seek to find the truth from our analysis – forming our own perspectives and defining our own solutions to today's most pressing issues.
+              We are a student-led think tank dedicated to fostering productive conversations by enabling free and critical thought through the analysis of perspectives from both sides of the political spectrum. We seek to find the truth from our analysis – forming our own perspectives and defining our own solutions to today's most pressing issues.
             </p>
 
             <div className="animate-on-load opacity-0">
